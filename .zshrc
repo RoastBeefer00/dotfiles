@@ -1,3 +1,16 @@
+export ZSH="$HOME/.oh-my-zsh"
+
+ZSH_THEME=""
+
+plugins=(
+    git 
+    sudo
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+)
+
+source $ZSH/oh-my-zsh.sh
+
 source ~/.zsh_profile
 
 export EDITOR="nvim"
@@ -12,10 +25,6 @@ eval "$($(which mise) activate zsh)"
 alias ll="eza -la"
 alias ls="eza -a"
 alias tree="eza --tree"
-alias g="git"
-alias gst="git status"
-alias gl="git pull"
-alias gc="git clone"
 
 function vim() {
     if [ -z "$@" ]; then

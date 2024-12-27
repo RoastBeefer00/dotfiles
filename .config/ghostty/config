@@ -2,4 +2,6 @@ theme = tokyonight
 window-decoration = false
 window-padding-x = 4
 window-padding-y = 4
-font-family = "FiraCode Nerd"
+font-family = "ZedMono Nerd Font"
+font-size = 16
+confirm-close-surface = false
