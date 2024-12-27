@@ -1,0 +1,5 @@
+theme = tokyonight
+window-decoration = false
+window-padding-x = 4
+window-padding-y = 4
+font-family = "FiraCode Nerd"

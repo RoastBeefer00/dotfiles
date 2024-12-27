@@ -1,0 +1,4 @@
+PATH="$PATH:$HOME/.local/scripts"
+
+# bindkey -s ^f "$HOME/.local/scripts/wez-sess\n"
+bindkey -s ^f "$HOME/.local/scripts/tmux-sessionizer\n"
