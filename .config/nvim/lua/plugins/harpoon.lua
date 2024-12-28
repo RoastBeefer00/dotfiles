@@ -40,8 +40,8 @@ return {
                 }):find()
             end
 
-            vim.keymap.set("n", "<leader>fh", function() toggle_telescope(harpoon:list()) end,
-                { desc = "Open harpoon window" })
+            -- vim.keymap.set("n", "<leader>fh", function() toggle_telescope(harpoon:list()) end,
+            --     { desc = "Open harpoon window" })
         end
     },
     {

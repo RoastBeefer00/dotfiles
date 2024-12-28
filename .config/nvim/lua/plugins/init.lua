@@ -10,12 +10,41 @@ return {
         config = function()
             require("telescope").setup()
             local builtin = require('telescope.builtin')
-            vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-            vim.keymap.set('n', '<leader>ft', "<cmd>TodoTelescope<CR>", {})
-            vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
-            vim.keymap.set('n', '<leader>fs', function()
-                builtin.grep_string({ search = vim.fn.input("Grep > ") });
-            end)
+            vim.keymap.set('n', '<leader>ft', "<cmd>TodoTelescope<CR>", { desc = '[F]ind Todo' })
+            vim.keymap.set('n', '<leader>fg', builtin.git_files, { desc = '[F]ind [G]it files' })
+            -- vim.keymap.set('n', '<leader>fs', function()
+            --     builtin.grep_string({ search = vim.fn.input("Grep > ") });
+            -- end)
+            vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
+            vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [K]eymaps' })
+            -- vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[F]ind [F]iles' })
+            vim.keymap.set('n', '<leader>ff', "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>", { desc = '[F]ind [F]iles' })
+            vim.keymap.set('n', '<leader>fs', builtin.builtin, { desc = '[F]ind [S]elect Telescope' })
+            vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = '[F]ind current [W]ord' })
+            vim.keymap.set('n', '<leader>fl', builtin.live_grep, { desc = '[F]ind by [L]ivegrep' })
+            vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })
+            vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = '[F]ind [R]esume' })
+            vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
+            vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+
+            -- Slightly advanced example of overriding default behavior and theme
+            vim.keymap.set('n', '<leader>/', function()
+                -- You can pass additional configuration to Telescope to change the theme, layout, etc.
+                builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+                    winblend = 10,
+                    previewer = false,
+                })
+            end, { desc = '[/] Fuzzily search in current buffer' })
+
+            -- It's also possible to pass additional configuration options.
+            --  See `:help telescope.builtin.live_grep()` for information about particular keys
+            vim.keymap.set('n', '<leader>f/', function()
+                builtin.live_grep {
+                    grep_open_files = true,
+                    prompt_title = 'Live Grep in Open Files',
+                }
+            end, { desc = '[F]ind [/] in Open Files' })
+
             require("telescope").load_extension("undo")
             vim.keymap.set("n", "<leader>fu", "<cmd>Telescope undo<cr>")
         end
@@ -113,7 +142,6 @@ return {
                     lsp.preset("recommended")
 
                     lsp.ensure_installed({
-                        'tsserver',
                         'rust_analyzer',
                     })
 
@@ -166,9 +194,9 @@ return {
                         vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
                         vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, opts)
                         vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, opts)
-                        vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-                        vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-                        vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+                        vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
+                        vim.keymap.set("n", "<leader>rr", function() vim.lsp.buf.references() end, opts)
+                        vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
                         vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
                     end)
 
