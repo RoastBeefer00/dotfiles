@@ -20,6 +20,7 @@
   ],
   "modules-right": [
     "tray",
+    "custom/divider",
     // "custom/updates",
     "network",
     "custom/divider",
