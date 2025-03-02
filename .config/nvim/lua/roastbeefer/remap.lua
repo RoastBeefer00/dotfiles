@@ -77,3 +77,12 @@ vim.keymap.set("n", "<C-\\>", require("smart-splits").move_cursor_previous)
 vim.keymap.set("n", "<leader>qc", function()
 	vim.cmd("CopilotChat " .. vim.fn.input("Copilot quick chat: "))
 end)
+
+-- Neotest
+vim.keymap.set("n", "<leader>ta", function()
+	require("neotest").run.run(vim.fn.expand("%"))
+end)
+vim.keymap.set("n", "<leader>tn", function()
+	require("neotest").run.run()
+end)
+vim.keymap.set("n", "<leader>tp", "<cmd>Neotest output-panel<CR>")

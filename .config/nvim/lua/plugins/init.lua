@@ -96,10 +96,34 @@ return {
 				"neovim/nvim-lspconfig",
 				config = function()
 					local lsp = require("lsp-zero")
+					require("lspconfig").rust_analyzer.setup({
+						settings = {
+							["rust-analyzer"] = {
+								cargo = {
+									allFeatures = true,
+								},
+								procMacro = {
+									enable = true,
+									-- ignored = {
+									--     leptos_macro = ["server"],
+									-- },
+								},
+								rustfmt = {
+									overrideCommand = {
+										"leptosfmt",
+										"--stdin",
+										"--rustfmt",
+									},
+								},
+							},
+						},
+					})
 					require("lspconfig").html.setup({
 						filetypes = {
 							"html",
 							"templ",
+							"rust",
+							"rs",
 						},
 					})
 					require("lspconfig").htmx.setup({
