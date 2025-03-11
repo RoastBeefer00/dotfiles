@@ -16,6 +16,7 @@ abbr g "git"
 abbr gst "git status"
 abbr gco "git checkout"
 abbr gb "git branch"
+abbr gl "git pull"
 
 function vim
     if test -z $argv
@@ -32,7 +33,7 @@ function dopush
 end
 
 function new_branch
-    gco -b $argv
+    git checkout -b $argv
     git push --set-upstream origin $argv
 end
 
