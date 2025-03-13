@@ -37,6 +37,9 @@ function new_branch
     git push --set-upstream origin $argv
 end
 
+function fish_greeting
+end
+
 if test -e "$WASM_DIR/wasmer.sh"
     source "$WASM_DIR/wasmer.sh"
 end
