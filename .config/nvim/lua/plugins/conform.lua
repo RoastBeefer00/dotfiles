@@ -12,6 +12,7 @@ return {
 				-- Conform will run the first available formatter
 				javascript = { "prettierd", "prettier", stop_after_first = true },
 				go = { "gofumpt", "golines", "goimports" },
+				dart = { command = "dart format " .. vim.api.nvim_buf_get_name(0), async = true },
 			},
 		})
 		vim.api.nvim_create_autocmd("BufWritePre", {

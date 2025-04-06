@@ -8,6 +8,7 @@ bind ctrl-f "$HOME/.local/scripts/tmux-sessionizer"
 set PATH "$HOME/.local/scripts:$PATH"
 set PATH "$HOME/.cargo/bin:$PATH"
 set PATH "$BUN_INSTALL/bin:$PATH"
+set PATH "/opt/flutter/bin:$PATH"
 
 abbr ll "eza -la"
 abbr ls "eza -a"
